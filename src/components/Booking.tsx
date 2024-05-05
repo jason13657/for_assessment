@@ -10,12 +10,12 @@ import Confirm from "./Confirm";
 type Props = {};
 
 export default function Booking({}: Props) {
-  const [selected, setselected] = useState(0);
+  const [selected, setSelected] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
 
   return (
     <section className="inline-flex flex-col justify-center bg-white p-3 max-w-3xl w-full mt-3 rounded-sm">
-      <Stages selected={selected} />
+      <Stages selected={selected} setSelected={setSelected} />
       {selected == 0 && <Selector />}
       {selected == 1 && <Information />}
       {selected == 2 && <Calender />}
@@ -33,7 +33,7 @@ export default function Booking({}: Props) {
             onClick={() => {
               setConfirmed(false);
 
-              setselected(selected - 1);
+              setSelected(selected - 1);
             }}
           />
         )}
@@ -43,7 +43,7 @@ export default function Booking({}: Props) {
             onClick={() => {
               setConfirmed(false);
 
-              setselected(selected + 1);
+              setSelected(selected + 1);
             }}
           />
         )}

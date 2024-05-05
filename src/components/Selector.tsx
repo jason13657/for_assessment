@@ -14,7 +14,9 @@ export default function Selector({}: Props) {
         {OPTIONS.map((option, index) => (
           <li
             key={option}
-            className={`w-full text-center py-2 ${index === selected && "bg-sky-600 text-white"}`}
+            className={`flex justify-center items-center w-full text-center p-2 ${
+              index === selected && "bg-sky-600 text-white"
+            }`}
             onClick={() => {
               setselected(index);
             }}
