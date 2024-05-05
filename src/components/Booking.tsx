@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stages from "./Stages";
 import Selector from "./Selector";
 import Information from "./Information";
@@ -12,6 +12,10 @@ type Props = {};
 export default function Booking({}: Props) {
   const [selected, setSelected] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
+
+  useEffect(() => {
+    setConfirmed(false);
+  }, [selected]);
 
   return (
     <section className="inline-flex flex-col justify-center bg-white p-3 max-w-3xl w-full mt-3 rounded-sm">
@@ -31,8 +35,6 @@ export default function Booking({}: Props) {
           <Button
             text="Prev"
             onClick={() => {
-              setConfirmed(false);
-
               setSelected(selected - 1);
             }}
           />
@@ -41,8 +43,6 @@ export default function Booking({}: Props) {
           <Button
             text="Next"
             onClick={() => {
-              setConfirmed(false);
-
               setSelected(selected + 1);
             }}
           />
