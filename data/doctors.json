@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Oliver Smith",
+    "department": "pediatric_surgery"
+  },
+  {
+    "name": "Emily Jones",
+    "department": "pediatric_surgery"
+  },
+  {
+    "name": "Nah Idwin",
+    "department": "pediatric_surgery"
+  },
+  {
+    "name": "Poppy Brown",
+    "department": "urology"
+  },
+  {
+    "name": "Thomas Brown",
+    "department": "urology"
+  },
+  {
+    "name": "Martin Idwin",
+    "department": "urology"
+  },
+  {
+    "name": "Sophia Wilson",
+    "department": "family_medicine"
+  },
+  {
+    "name": "Elizabeth Lee",
+    "department": "family_medicine"
+  },
+  {
+    "name": "Jessica Jones",
+    "department": "family_medicine"
+  }
+]

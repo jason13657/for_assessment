@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-y: scroll;
+}
+
+.react-calendar__tile--active {
+  color: white;
+  background-color: #0284c7;
+}
+
+.react-calendar__navigation {
+  padding: 10px;
+}
+
+.react-calendar__navigation__arrow {
+  padding: 10px;
+  font-size: 20px;
+}
