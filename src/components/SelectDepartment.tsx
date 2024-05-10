@@ -1,7 +1,11 @@
 import { Doctor } from "@/service/doctor";
+import { makeDepartmentNamePretty } from "@/util";
 import { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {
+  onChange: (data: Doctor) => void;
+  choosen: Doctor;
+};
 
 const SELECT_OPTIONS = [
   {
@@ -18,10 +22,9 @@ const SELECT_OPTIONS = [
   },
 ];
 
-export default function SelectDepartment({}: Props) {
+export default function SelectDepartment({ onChange, choosen }: Props) {
   const [value, setValue] = useState("pediatric_surgery");
   const [doctors, setDoctors] = useState<Doctor[]>([]);
-  const [choosen, setChoosen] = useState<Doctor>();
 
   useEffect(() => {
     fetch(`/api/doctors?department=${value}`)
@@ -52,16 +55,18 @@ export default function SelectDepartment({}: Props) {
         </div>
         {doctors && (
           <ul className="flex gap-2 flex-col py-2 border-t-2">
-            {doctors.map(({ name, department }) => (
-              <li
-                key={name}
-                className={`flex p-2 hover:bg-neutral-100 ${choosen?.name === name && "bg-slate-200"}`}
-                onClick={() => {
-                  setChoosen({ name, department });
-                }}
-              >
-                <p className="w-32">{department}</p>
-                <p className="w-full text-center">{name}</p>
+            {doctors.map(({ name, department }, index) => (
+              <li key={name}>
+                <div
+                  className={`flex p-2 hover:bg-neutral-100 ${choosen?.name === name && "bg-slate-200"}`}
+                  onClick={() => {
+                    onChange({ name, department });
+                  }}
+                >
+                  <p className="w-40">{makeDepartmentNamePretty(department)}</p>
+                  <p className="w-full text-center">{name}</p>
+                </div>
+                {index !== doctors.length - 1 && <div className="border mt-2"></div>}
               </li>
             ))}
           </ul>

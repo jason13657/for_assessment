@@ -1,11 +1,15 @@
 import { useState } from "react";
 import SelectDepartment from "./SelectDepartment";
+import { Doctor } from "@/service/doctor";
 
-type Props = {};
+type Props = {
+  onChange: (data: Doctor) => void;
+  choosen: Doctor;
+};
 
 const OPTIONS = ["Select a medical department", "Search for medical staff"];
 
-export default function Selector({}: Props) {
+export default function Selector({ onChange, choosen }: Props) {
   const [selected, setselected] = useState(0);
 
   return (
@@ -25,7 +29,7 @@ export default function Selector({}: Props) {
           </li>
         ))}
       </ul>
-      {selected === 0 && <SelectDepartment />}
+      {selected === 0 && <SelectDepartment onChange={onChange} choosen={choosen} />}
     </div>
   );
 }
